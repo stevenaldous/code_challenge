@@ -1,12 +1,32 @@
-body{
-  color: #656565;
-}
 .form-group{
   margin-top: 100px;
   text-align: center;
 }
 #search-results{
   margin-top: 25px;
-  background-color: #FFFFCC;
-  min-height: 200px;
+}
+.knack{
+  padding-bottom: 25px;
+}
+.knack .knackImage{
+    min-height: 300px;
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+}
+.knack .knackText{
+  padding-top: 10px;
+  min-height: 80px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  color:#FF0000;
+}
+@media (min-width:768px){
+  .knack .knackText{
+    color:#000000;
+  }
 }
