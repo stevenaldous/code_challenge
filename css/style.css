@@ -1,0 +1,12 @@
+body{
+  color: #656565;
+}
+.form-group{
+  margin-top: 100px;
+  text-align: center;
+}
+#search-results{
+  margin-top: 25px;
+  background-color: #FFFFCC;
+  min-height: 200px;
+}
