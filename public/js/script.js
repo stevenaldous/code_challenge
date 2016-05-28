@@ -1,35 +1,36 @@
  $(function() {
-    var searchText = $('#search');
-    var knackDisplay = $('#search-results')
-
+    var newSearch = $('#search');
+    var searchText = newSearch.val().toLowerCase();
+    var knackDisplay = $('#search-results');
 
     //IMPLEMENT SEARCH API CALL
     $("#my-form").on("submit", function(e) {
       e.preventDefault();
       knackDisplay.html("Loading...");
-      var url="http://knack-prod.cloudapp.net/knack/make/product?search[]="+searchText.val();
+      var url="http://knack-prod.cloudapp.net/knack/make/product?search[]="+searchText;
       $.getJSON(url,function(knackData){
         var knack = knackData.results;
         if(knack){
+
         //SORT ITEMS AS DESCRIBED.
+        knackDisplay.html("");
         knack.forEach(function(knack){
+
+
         var knackArray = [];
-        if(knack.product.title == searchText){
+
+        var str = knack.product.title;
+        if( str.toLowerCase().indexOf(searchText) != -1){
           knackArray.push(knack.product);
         }
-        console.log("knackArray"+knackArray)
-
             //DISPLAY RESULTS IN #search-results
-            knackDisplay.html("");
-            knackArray.forEach(function(item){
 
-            // knack.forEach(function(item){
+            knackArray.forEach(function(item){
               var myKnack = $('<div />',{
                 "class": "knack col-xs-12 col-sm-3"
               });
-              var knackImg = "https:"+item.product.featured_image;
-              var knackTitle = item.product.title;
-
+              var knackImg = "https:" + item.featured_image;
+              var knackTitle = item.title;
               var imgDiv = $("<div />",{
                 class: "knackImage",
                 style: "background-image: url("+knackImg+");"
